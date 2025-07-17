@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #000;
+}
+header {
+  background: #004aad;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#search {
+  flex-grow: 1;
+  padding: 5px;
+  font-size: 1em;
+}
+button {
+  background: #0066ff;
+  border: none;
+  color: white;
+  padding: 7px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+button:hover {
+  background: #004aad;
+}
+main {
+  padding: 20px;
+}
+.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
