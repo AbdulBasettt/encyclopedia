@@ -1,43 +1,25 @@
-const CACHE_NAME = 'abdul-baset-encyclopedia-v1';
-const FILES_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/app.js',
-  '/settings.js',
-  '/utils.js',
-  '/manifest.json'
-];
-
-self.addEventListener('install', (evt) => {
-  evt.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(FILES_TO_CACHE);
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open("encyclopedia-v1").then(cache => {
+      return cache.addAll([
+        "index.html",
+        "style.css",
+        "main.js",
+        "manifest.json",
+        "data/content.json",
+        "lang/ru.json",
+        "lang/en.json",
+        "icons/icon-192.png",
+        "icons/icon-512.png"
+      ]);
     })
   );
-  self.skipWaiting();
 });
 
-self.addEventListener('activate', (evt) => {
-  evt.waitUntil(
-    caches.keys().then(keyList => {
-      return Promise.all(keyList.map(key => {
-        if (key !== CACHE_NAME) {
-          return caches.delete(key);
-        }
-      }));
-    })
-  );
-  self.clients.claim();
-});
-
-self.addEventListener('fetch', (evt) => {
-  if (evt.request.mode !== 'navigate') {
-    return;
-  }
-  evt.respondWith(
-    fetch(evt.request).catch(() => {
-      return caches.match('/index.html');
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
     })
   );
 });
