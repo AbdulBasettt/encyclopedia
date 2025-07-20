@@ -1,1 +1,61 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Энциклопедия</title></head><body><h1>Добро пожаловать</h1><script src='main.js'></script></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Энциклопедия Абдула Басета</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#4a90e2" />
+</head>
+<body>
+  <header>
+    <h1>Энциклопедия Абдула Басета</h1>
+    <nav id="nav"></nav>
+  </header>
+
+  <main id="content">
+    <div id="search-container">
+      <input type="search" id="search-input" placeholder="Поиск..." />
+      <button id="clear-search" title="Очистить поиск">×</button>
+    </div>
+
+    <section id="blocks-list"></section>
+    <section id="block-detail" class="hidden"></section>
+  </main>
+
+  <aside id="settings-panel" class="hidden">
+    <h2>Настройки</h2>
+    <label>
+      Тема:
+      <select id="theme-select">
+        <option value="light">Светлая</option>
+        <option value="dark">Тёмная</option>
+      </select>
+    </label>
+    <label>
+      Язык:
+      <select id="lang-select">
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
+      </select>
+    </label>
+    <button id="close-settings">Закрыть</button>
+  </aside>
+
+  <footer>
+    <button id="settings-toggle" title="Настройки">⚙️</button>
+  </footer>
+
+  <script src="utils.js"></script>
+  <script src="settings.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>
