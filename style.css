@@ -1,0 +1,19 @@
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #000;
+}
+body.dark {
+  background-color: #111;
+  color: #eee;
+}
+header {
+  padding: 1em;
+  background: #444;
+  color: white;
+  display: flex;
+  gap: 1em;
+}
