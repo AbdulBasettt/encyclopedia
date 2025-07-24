@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Энциклопедия</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>📘 Энциклопедия</h1>
+      <button id="open-settings">⚙️</button>
+    </header>
+
+    <nav id="nav"></nav>
+
+    <main id="content">Загрузка...</main>
+
+    <div id="player" class="hidden">
+      <audio id="audio" controls></audio>
+      <video id="video" controls></video>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
