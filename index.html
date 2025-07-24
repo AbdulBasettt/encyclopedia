@@ -3,27 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Энциклопедия</title>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="styles.css" />
+  <title>Модульное ядро</title>
+  <style>
+    body.dark { background: #111; color: #eee; }
+    .block { padding: 8px; margin: 4px; border: 1px solid #ccc; }
+    .view { display: none; }
+    .view.active { display: block; }
+  </style>
 </head>
 <body>
-  <div id="app">
-    <header>
-      <h1>📘 Энциклопедия</h1>
-      <button id="open-settings">⚙️</button>
-    </header>
 
-    <nav id="nav"></nav>
+  <h1>Главная</h1>
 
-    <main id="content">Загрузка...</main>
+  <input type="text" oninput="filterBlocks(this.value)" placeholder="Поиск..." />
+  <div class="block">Физическое здоровье</div>
+  <div class="block">Питание</div>
+  <div class="block">Интимная близость</div>
 
-    <div id="player" class="hidden">
-      <audio id="audio" controls></audio>
-      <video id="video" controls></video>
-    </div>
-  </div>
+  <hr />
 
-  <script type="module" src="app.js"></script>
+  <button onclick="toggleTheme()">Переключить тему</button>
+  <button onclick="saveToFavorites('Физическое здоровье')">В избранное</button>
+  <button onclick="playAudio('sample.mp3')">Играть аудио</button>
+
+  <hr />
+
+  <a href="#home">Главная</a> |
+  <a href="#settings">Настройки</a>
+
+  <div id="home" class="view active">Домашний экран</div>
+  <div id="settings" class="view">Настройки</div>
+
+  <!-- Скрипты -->
+  <script src="settings.js"></script>
+  <script src="player.js"></script>
+  <script src="storage.js"></script>
+  <script src="filters.js"></script>
+  <script src="router.js"></script>
 </body>
 </html>

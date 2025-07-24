@@ -1,8 +1,6 @@
-// Поиск по названию
-function filterBlocks(term) {
-  const items = document.querySelectorAll('.block');
-  items.forEach(item => {
-    const title = item.textContent.toLowerCase();
-    item.style.display = title.includes(term.toLowerCase()) ? '' : 'none';
+function filterBlocks(query) {
+  const blocks = document.querySelectorAll('.block');
+  blocks.forEach(block => {
+    block.style.display = block.textContent.toLowerCase().includes(query.toLowerCase()) ? '' : 'none';
   });
 }
