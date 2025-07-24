@@ -1,44 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Модульное ядро</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Энциклопедия Абдула</title>
   <style>
-    body.dark { background: #111; color: #eee; }
-    .block { padding: 8px; margin: 4px; border: 1px solid #ccc; }
-    .view { display: none; }
-    .view.active { display: block; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color, #fff);
+      color: var(--text-color, #111);
+      padding: 20px;
+    }
   </style>
 </head>
 <body>
-
-  <h1>Главная</h1>
-
-  <input type="text" oninput="filterBlocks(this.value)" placeholder="Поиск..." />
-  <div class="block">Физическое здоровье</div>
-  <div class="block">Питание</div>
-  <div class="block">Интимная близость</div>
-
-  <hr />
-
-  <button onclick="toggleTheme()">Переключить тему</button>
-  <button onclick="saveToFavorites('Физическое здоровье')">В избранное</button>
-  <button onclick="playAudio('sample.mp3')">Играть аудио</button>
-
-  <hr />
-
-  <a href="#home">Главная</a> |
-  <a href="#settings">Настройки</a>
-
-  <div id="home" class="view active">Домашний экран</div>
-  <div id="settings" class="view">Настройки</div>
-
-  <!-- Скрипты -->
-  <script src="settings.js"></script>
-  <script src="player.js"></script>
-  <script src="storage.js"></script>
-  <script src="filters.js"></script>
-  <script src="router.js"></script>
+  <h1>Энциклопедия Абдула</h1>
+  <p>Добро пожаловать!</p>
+  <a href="settings.html">Перейти к настройкам</a>
 </body>
 </html>
