@@ -1,1 +1,29 @@
-body { font-family: sans-serif; background: #fff; color: #000; }
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f9f9f9;
+  color: #222;
+}
+header {
+  background: #2d2d2d;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+.container {
+  padding: 1em;
+}
+.block {
+  background: white;
+  margin: 0.5em 0;
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+.back-button {
+  display: inline-block;
+  margin-bottom: 1em;
+  color: #007bff;
+  cursor: pointer;
+}
