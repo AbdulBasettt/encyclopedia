@@ -1,44 +1,41 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Энциклопедия Абдула</title>
-  <style>
-    body { font-family: sans-serif; padding: 1rem; background: #fefefe; }
-    .block { border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin: 1rem 0; background: #fff; }
-    .block h2 { margin: 0 0 0.5rem; }
-    .block p { margin: 0; }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Энциклопедия Абдула 📘</h1>
-  <div id="blocks-container">Загрузка...</div>
+  <header>
+    <h1>📘 Энциклопедия Абдула</h1>
+    <div class="menu">
+      <button onclick="toggleSettings()">⚙️</button>
+    </div>
+  </header>
 
-  <script>
-    async function loadBlocks() {
-      const res = await fetch('blocks.json');
-      const data = await res.json();
-      const container = document.getElementById('blocks-container');
-      container.innerHTML = '';
+  <main id="content"></main>
 
-      data.forEach(section => {
-        const sectionDiv = document.createElement('div');
-        sectionDiv.className = 'block';
-        sectionDiv.innerHTML = `
-          <h2>${section.title}</h2>
-          <p>${section.description}</p>
-        `;
-        section.blocks.forEach(b => {
-          const sub = document.createElement('div');
-          sub.style.marginTop = '0.5rem';
-          sub.innerHTML = `<strong>${b.title}</strong><br><span>${b.content}</span>`;
-          sectionDiv.appendChild(sub);
-        });
-        container.appendChild(sectionDiv);
-      });
-    }
-    loadBlocks();
-  </script>
+  <div id="settingsPanel" class="panel hidden">
+    <h2>⚙️ Настройки</h2>
+    <label>🌗 Тема:
+      <select id="themeSelect">
+        <option value="light">Светлая</option>
+        <option value="dark">Тёмная</option>
+      </select>
+    </label>
+    <label>🌍 Язык:
+      <select id="langSelect">
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
+      </select>
+    </label>
+    <label>🔊 Громкость:
+      <input type="range" id="volumeRange" min="0" max="1" step="0.1">
+    </label>
+  </div>
+
+  <script src="settings.js"></script>
+  <script src="blocks.js"></script>
 </body>
 </html>

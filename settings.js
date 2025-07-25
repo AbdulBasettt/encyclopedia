@@ -1,25 +1,31 @@
-function saveSettings() {
-    const theme = document.getElementById("theme").value;
-    const language = document.getElementById("language").value;
-    const volume = document.getElementById("volume").value;
-    const tutorial = document.getElementById("tutorial").checked;
-
-    localStorage.setItem("theme", theme);
-    localStorage.setItem("language", language);
-    localStorage.setItem("volume", volume);
-    localStorage.setItem("tutorial", tutorial);
-
-    alert("Настройки сохранены!");
+function toggleSettings() {
+  document.getElementById("settingsPanel").classList.toggle("hidden");
 }
 
-function goBack() {
-    window.location.href = "index.html";
+function applySettings() {
+  const theme = localStorage.getItem("theme") || "light";
+  document.body.classList.toggle("dark", theme === "dark");
+  document.getElementById("themeSelect").value = theme;
+
+  const lang = localStorage.getItem("lang") || "ru";
+  document.getElementById("langSelect").value = lang;
+
+  const volume = localStorage.getItem("volume") || 1;
+  document.getElementById("volumeRange").value = volume;
 }
 
-// Применяем сохранённые значения
-window.onload = () => {
-    document.getElementById("theme").value = localStorage.getItem("theme") || "light";
-    document.getElementById("language").value = localStorage.getItem("language") || "ru";
-    document.getElementById("volume").value = localStorage.getItem("volume") || "0.5";
-    document.getElementById("tutorial").checked = localStorage.getItem("tutorial") === "true";
-};
+document.getElementById("themeSelect").addEventListener("change", (e) => {
+  const theme = e.target.value;
+  document.body.classList.toggle("dark", theme === "dark");
+  localStorage.setItem("theme", theme);
+});
+
+document.getElementById("langSelect").addEventListener("change", (e) => {
+  localStorage.setItem("lang", e.target.value);
+});
+
+document.getElementById("volumeRange").addEventListener("input", (e) => {
+  localStorage.setItem("volume", e.target.value);
+});
+
+applySettings();
