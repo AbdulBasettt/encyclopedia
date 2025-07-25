@@ -1,31 +1,46 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Настройки</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Настройки</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Настройки</h1>
-    <label>Тема:
-        <select id="theme">
-            <option value="light">Светлая</option>
-            <option value="dark">Тёмная</option>
-        </select>
-    </label><br><br>
-    <label>Язык:
-        <select id="language">
-            <option value="ru">Русский</option>
-            <option value="en">English</option>
-        </select>
-    </label><br><br>
-    <label>Громкость:
-        <input type="range" id="volume" min="0" max="1" step="0.1">
-    </label><br><br>
-    <label><input type="checkbox" id="tutorial"> Режим обучения</label><br><br>
-    <button onclick="saveSettings()">Сохранить</button>
-    <button onclick="goBack()">Назад</button>
+  <div class="container">
+    <a href="index.html" class="btn">← <span data-i18n="back">Назад</span></a>
+    <h2 data-i18n="settings">Настройки</h2>
 
-    <script src="settings.js"></script>
+    <label><span data-i18n="theme">Тема</span>:
+      <select id="theme-select">
+        <option value="light" data-i18n="light">Светлая</option>
+        <option value="dark" data-i18n="dark">Тёмная</option>
+      </select>
+    </label>
+
+    <label><span data-i18n="language">Язык</span>:
+      <select id="lang-select">
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
+      </select>
+    </label>
+
+    <button onclick="saveSettings()" data-i18n="save">💾 Сохранить</button>
+  </div>
+
+  <script src="lang.js"></script>
+  <script>
+    document.getElementById("theme-select").value = localStorage.getItem("theme") || "light";
+    document.getElementById("lang-select").value = localStorage.getItem("lang") || "ru";
+
+    function saveSettings() {
+      localStorage.setItem("theme", document.getElementById("theme-select").value);
+      localStorage.setItem("lang", document.getElementById("lang-select").value);
+      alert("✔️ Сохранено!");
+    }
+
+    applyTheme();
+    applyLanguage();
+  </script>
 </body>
 </html>

@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Энциклопедия</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Энциклопедия</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Добро пожаловать</h1>
-    <a href="settings.html">Перейти к настройкам</a>
+  <div class="container">
+    <h1 data-i18n="title">Добро пожаловать</h1>
+    <a href="settings.html" class="btn">⚙️ <span data-i18n="settings">Настройки</span></a>
+    <a href="block1.html" class="btn">📘 <span data-i18n="block_example">Пример блока</span></a>
+  </div>
+
+  <script src="lang.js"></script>
+  <script>
+    applyTheme();
+    applyLanguage();
+  </script>
 </body>
 </html>

@@ -1,5 +1,12 @@
 {
-    "title": "Encyclopedia",
-    "welcome": "Welcome",
-    "settings": "Settings"
+  "title": "Welcome",
+  "settings": "Settings",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark",
+  "language": "Language",
+  "save": "Save",
+  "block_example": "Example Block",
+  "block_text": "This is a sample block of text, which can be loaded via JSON or manually.",
+  "back": "Back"
 }

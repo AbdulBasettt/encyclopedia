@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Пример блока</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="btn">← <span data-i18n="back">Назад</span></a>
+    <h2 data-i18n="block_example">Пример блока</h2>
+    <p data-i18n="block_text">Это пример текстового блока, который будет подгружаться из JSON или вручную.</p>
+  </div>
+
+  <script src="lang.js"></script>
+  <script>
+    applyTheme();
+    applyLanguage();
+  </script>
+</body>
+</html>
