@@ -1,22 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Энциклопедия</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Энциклопедия Абдула</title>
+  <style>
+    body { font-family: sans-serif; padding: 1rem; background: #fefefe; }
+    .block { border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin: 1rem 0; background: #fff; }
+    .block h2 { margin: 0 0 0.5rem; }
+    .block p { margin: 0; }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1 data-i18n="title">Добро пожаловать</h1>
-    <a href="settings.html" class="btn">⚙️ <span data-i18n="settings">Настройки</span></a>
-    <a href="block1.html" class="btn">📘 <span data-i18n="block_example">Пример блока</span></a>
-  </div>
+  <h1>Энциклопедия Абдула 📘</h1>
+  <div id="blocks-container">Загрузка...</div>
 
-  <script src="lang.js"></script>
   <script>
-    applyTheme();
-    applyLanguage();
+    async function loadBlocks() {
+      const res = await fetch('blocks.json');
+      const data = await res.json();
+      const container = document.getElementById('blocks-container');
+      container.innerHTML = '';
+
+      data.forEach(section => {
+        const sectionDiv = document.createElement('div');
+        sectionDiv.className = 'block';
+        sectionDiv.innerHTML = `
+          <h2>${section.title}</h2>
+          <p>${section.description}</p>
+        `;
+        section.blocks.forEach(b => {
+          const sub = document.createElement('div');
+          sub.style.marginTop = '0.5rem';
+          sub.innerHTML = `<strong>${b.title}</strong><br><span>${b.content}</span>`;
+          sectionDiv.appendChild(sub);
+        });
+        container.appendChild(sectionDiv);
+      });
+    }
+    loadBlocks();
   </script>
 </body>
 </html>
